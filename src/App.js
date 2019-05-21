@@ -1,26 +1,34 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    valor: 1,
+    nombre: "",
+    lastName: ""
+  }
+  handler = ({target}) => {
+    const {name, value} = target
+    // this.state.name = event.target.value
+    this.setState({[name]: value})
+  }
+  // saveUser = (event) => {
+    
+  // }
+  render() {
+    console.log("Cambié")
+    return (
+      <div>
+        <h1>Repetidor</h1>
+        <input name="nombre" type="text" onChange={this.handler}></input>
+        <p>{this.state.nombre}</p>
+        {/* <input name="lastName" type="text" onChange={this.handler.lastName}></input> */}
+      </div>
+
+    )
+  }
+
 }
 
 export default App;
